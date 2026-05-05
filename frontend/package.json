@@ -18,6 +18,7 @@
     "@reduxjs/toolkit": "^2.11.2",
     "@stripe/react-stripe-js": "^6.3.0",
     "@stripe/stripe-js": "^9.4.0",
+    "@tailwindcss/vite": "^4.2.4",
     "axios": "^1.15.2",
     "country-state-city": "^3.2.1",
     "react": "^19.2.5",
