@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllOrdersOfShop } from "../../redux/actions/order";
+import { getAllOrdersOfShop } from "../../redux/actions/order.js";
 import { Link } from "react-router-dom";
-import { Button } from "@material-ui/core";
-import Loader from "../Layout/Loader";
-import { DataGrid } from "@material-ui/data-grid";
+import { Button } from "@mui/material";
+import Loader from "../Layout/Loader.jsx";
+import { DataGrid } from "@mui/x-data-grid";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
 const AllOrders = () => {

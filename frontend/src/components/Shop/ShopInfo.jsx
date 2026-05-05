@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Loader from "../Layout/Loader";
+import Loader from "../Layout/Loader.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProductsShop } from "../../redux/actions/product";
+import { getAllProductsShop } from "../../redux/actions/product.js";
 import { backendUrl, server } from "../../server";
-import styles from "../../styles/style";
+import styles from "../../styles/style.js";
 import { toast } from "react-toastify";
 
 const ShopInfo = ({ isOwner }) => {

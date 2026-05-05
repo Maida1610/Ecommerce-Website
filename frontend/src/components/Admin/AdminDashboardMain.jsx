@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import { AiOutlineMoneyCollect } from "react-icons/ai";
 import { MdBorderClear } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { DataGrid } from "@material-ui/data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllOrdersOfAdmin } from "../../redux/actions/order";
-import Loader from "../Layout/Loader";
-import { getAllSellers } from "../../redux/actions/sellers";
-import styles from "../../styles/style";
+import { getAllOrdersOfAdmin } from "../../redux/actions/order.js";
+import Loader from "../Layout/Loader.jsx";
+import { getAllSellers } from "../../redux/actions/seller.js";
+import styles from "../../styles/style.js";
 
 const AdminDashboardMain = () => {
   const dispatch = useDispatch();

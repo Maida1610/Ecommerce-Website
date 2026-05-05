@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
-import { Button } from "@material-ui/core";
-import Loader from "../Layout/Loader";
-import { DataGrid } from "@material-ui/data-grid";
-import { deleteEvent, getAllEventsShop } from "../../redux/actions/event";
+import { Button } from "@mui/material";
+import Loader from "../Layout/Loader.jsx";
+import { DataGrid } from "@mui/x-data-grid";
+import { deleteEvent, getAllEventsShop } from "../../redux/actions/event.js";
 
 const AllEvents = () => {
   const dispatch = useDispatch();

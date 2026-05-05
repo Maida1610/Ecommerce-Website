@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { BsFillBagFill } from "react-icons/bs";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllOrdersOfShop } from "../../redux/actions/order";
+import { getAllOrdersOfShop } from "../../redux/actions/order.js";
 import { backendUrl, server } from "../../server";
 import axios from "axios";
 import { toast } from "react-toastify";
-import styles from "../../styles/style";
+import styles from "../../styles/style.js";
 
 const OrderDetails = () => {
   const { orders } = useSelector((state) => state.order);

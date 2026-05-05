@@ -7,17 +7,17 @@ import {
 } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { getAllProductsShop } from "../../redux/actions/product";
+import { getAllProductsShop } from "../../redux/actions/product.js";
 import { backendUrl, server } from "../../server";
 import {
   addToWishlist,
   removeFromWishlist,
 } from "../../redux/actions/wishlist";
-import { addTocart } from "../../redux/actions/cart";
+import { addTocart } from "../../redux/actions/cart.js";
 import { toast } from "react-toastify";
 import Ratings from "./Ratings";
 import axios from "axios";
-import styles from "../../styles/style";
+import styles from "../../styles/style.js";
 
 const ProductDetails = ({ data }) => {
   const { seller } = useSelector((state) => state.seller);

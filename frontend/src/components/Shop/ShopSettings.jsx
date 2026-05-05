@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineCamera } from "react-icons/ai";
 import axios from "axios";
-import { loadSeller } from "../../redux/actions/user";
+import { loadSeller } from "../../redux/actions/user.js";
 import { toast } from "react-toastify";
-import styles from "../../styles/style";
+import styles from "../../styles/style.js";
 import { backendUrl, server } from "../../server";
 
 const ShopSettings = () => {

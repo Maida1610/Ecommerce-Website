@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllOrdersOfShop } from "../../redux/actions/order";
-import styles from "../../styles/style";
+import { getAllOrdersOfShop } from "../../redux/actions/order.js";
+import styles from "../../styles/style.js";
 
 const WithdrawMoney = () => {
   const dispatch = useDispatch();

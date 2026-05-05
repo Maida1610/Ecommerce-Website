@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { categoriesData } from "../../static/data";
+import { categoriesData } from "../../static/data.jsx";
 import { toast } from "react-toastify";
-import { createEvent } from "../../redux/actions/event";
+import { createEvent } from "../../redux/actions/event.js";
 
 const CreateEvent = () => {
   const { seller } = useSelector((state) => state.seller);

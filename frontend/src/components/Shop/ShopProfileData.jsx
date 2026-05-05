@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { getAllProductsShop } from "../../redux/actions/product";
-import ProductCard from "../Route/ProductCard/ProductCard";
+import { getAllProductsShop } from "../../redux/actions/product.js";
+import ProductCard from "../Route/ProductCard/ProductCard.jsx";
 import Ratings from "../Products/Ratings";
-import { getAllEventsShop } from "../../redux/actions/event";
-import styles from "../../styles/style";
+import { getAllEventsShop } from "../../redux/actions/event.js";
+import styles from "../../styles/style.js";
 import { backendUrl } from "../../server";
 
 const ShopProfileData = ({ isOwner }) => {

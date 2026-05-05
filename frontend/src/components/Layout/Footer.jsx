@@ -9,7 +9,7 @@ import {
   footerCompanyLinks,
   footerProductLinks,
   footerSupportLinks,
-} from "../../static/data";
+} from "../../static/data.jsx";
 import { Link } from "react-router-dom";
 
 const Footer = () => {

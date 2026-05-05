@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Header from "../components/Layout/Header";
 import styles from "../styles/style";
-import ProfileSidebar from "../components/Profile/ProfileSidebar";
-import ProfileContent from "../components/Profile/ProfileContent";
+import ProfileSidebar from "../components/Profile/ProfileSidebar.jsx";
+import ProfileContent from "../components/Profile/ProfileContent.jsx";
 
 const ProfilePage = () => {
   const [active, setActive] = useState(1);

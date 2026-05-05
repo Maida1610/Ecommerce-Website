@@ -21,14 +21,14 @@ import {
   OrderDetailsPage,
   TrackOrderPage,
   UserInbox,
-} from "./routes/Routes.js";
+} from "./routes/Routes.jsx";
 import { ToastContainer, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Store from "./redux/store.js";
 import { loadSeller, loadUser } from "./redux/actions/user.js";
-import ProtectedRoute from "./routes/ProtectedRoute.js";
-import { ShopHomePage } from "./ShopRoutes.js";
-import SellerProtectedRoute from "./routes/SellerProtectedRoute.js";
+import ProtectedRoute from "./routes/ProtectedRoute.jsx";
+import { ShopHomePage } from "./routes/ShopRoutes.jsx";
+import SellerProtectedRoute from "./routes/SellerProtectedRoute.jsx";
 import {
   ShopDashboardPage,
   ShopCreateProduct,
@@ -43,7 +43,7 @@ import {
   ShopSettingPage,
   ShopWithdrawMoneyPage,
   ShopInboxPage,
-} from "./routes/ShopRoutes.js";
+} from "./routes/ShopRoutes.jsx";
 import {
   AdminDashboardPage,
   AdminDashboardUsers,
@@ -52,8 +52,8 @@ import {
   AdminDashboardProducts,
   AdminDashboardEvents,
   AdminDashboardWithdraw,
-} from "./routes/AdminRoutes.js";
-import ProtectedAdminRoute from "./routes/ProtectedAdminRoute.js";
+} from "./routes/AdminRoutes.jsx";
+import ProtectedAdminRoute from "./routes/ProtectedAdminRoute.jsx";
 import { getAllProducts } from "./redux/actions/product.js";
 import { getAllEvents } from "./redux/actions/event.js";
 import { Elements } from "@stripe/react-stripe-js";
