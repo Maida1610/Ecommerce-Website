@@ -5,20 +5,22 @@ import styles from "../../styles/style";
 
 const Navbar = ({ active }) => {
   return (
-    <div className={`block 800px:${styles.normalFlex}`}>
+    <div className={`flex flex-col md:flex-row ${styles.noramlFlex}`}>
       {navItems &&
         navItems.map((item, index) => (
-          <Link
-            key={index}
-            to={item.url}
-            className={`${
-              active === index + 1
-                ? "text-[#17dd1f]"
-                : "text-black 800px:text-white font-medium"
-            } pb-[30px] 800px:pb-0 font-[500] ml-[10px] cursor-pointer px-2 py-1 block`}
-          >
-            {item.title}
-          </Link>
+          <div className="flex" key={item.url || item.title || index}>
+            <Link
+              to={item.url}
+              className={`pb-2 md:pb-0 px-4 md:px-6 font-medium cursor-pointer transition-colors duration-200
+                ${
+                  active === index + 1
+                    ? "text-[#cdaa80]"
+                    : "text-slate-900 md:text-white hover:text-[#cdaa80]"
+                }`}
+            >
+              {item.title}
+            </Link>
+          </div>
         ))}
     </div>
   );
