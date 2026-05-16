@@ -13,19 +13,18 @@ const Hero = () => {
     >
       <div className={`${styles.section} w-[90%] 800px:w-[0=60%]`}>
         <h1
-          className={`text-[35px] leading[1.2] 800px:text-[60px] text-[#3d3a3a] font-[600 capitalize]`}
+          className={`text-[35px] leading[1.2] 800px:text-[60px] text-[#3d3a3a] font-[600] capitalize`}
         >
-          Best Collection for <br /> home Decoration
+          Discover Best Collection <br />
         </h1>
-        <p className="pt-5 text-[16px] font-[Poppins] font-[400] text-[#000000ba]">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut officiis
-          temporibus <br /> tempore ex quia, tenetur iure voluptatum fugiat
-          ullam quaerat <br /> odit, quidem at, facilis labore itaque? Aut
-          pariatur nostrum repellat.
+        <p className="pt-4 text-[20px] font-[Poppins] font-[400] text-[#000000ba]">
+          Transform your living space with our exclusive home decor collection,
+          <br />
+          From elegant wall art to cozy accessories.
         </p>
         <Link to="/products" className="inline-block">
           <div className={`${styles.button} mt-5`}>
-            <span className="text-[#fff] font-Poppins text-[18px]">
+            <span className="text-[#fff] font-Outfit text-[20px]">
               Shop Now
             </span>
           </div>

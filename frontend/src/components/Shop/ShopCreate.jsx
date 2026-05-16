@@ -25,7 +25,15 @@ const ShopCreate = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!avatar) {
+      toast.error("Please select avatar image");
+      return;
+    }
+
+    console.log(avatar);
+
     const formData = new FormData();
+
     formData.append("file", avatar);
     formData.append("name", name);
     formData.append("email", email);
@@ -34,31 +42,30 @@ const ShopCreate = () => {
     formData.append("address", address);
     formData.append("phoneNumber", phoneNumber);
 
-    const config = { headers: { "Content-Type": "multipart/form-data" } };
-
     try {
       const response = await axios.post(
         `${server}/shop/create-shop`,
         formData,
-        config,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        },
       );
-      if (response && response.data) {
-        toast.success(response.data.message); // Using toast to display success message
-        setName("");
-        setEmail("");
-        setPassword("");
-        setAvatar(null);
-        setZipCode("");
-        setAddress("");
-        setPhoneNumber("");
-      } else {
-        toast.error("Unexpected response from server.");
-      }
+
+      toast.success(response.data.message);
+
+      setName("");
+      setEmail("");
+      setPassword("");
+      setAvatar(null);
+      setZipCode("");
+      setAddress("");
+      setPhoneNumber("");
     } catch (error) {
-      const errorMessage =
-        error.response?.data?.message || "Something went wrong!";
-      setError(errorMessage);
-      toast.error(errorMessage);
+      console.log(error);
+
+      toast.error(error.response?.data?.message || "Something went wrong");
     }
   };
 

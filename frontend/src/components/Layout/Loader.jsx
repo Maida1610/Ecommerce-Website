@@ -1,10 +1,11 @@
+
 import React from "react";
 import Lottie from "react-lottie";
 import animationData from "../../Assests/animations/Animation - 1718914824813.json";
 
 const Loader = () => {
   const defaultOptions = {
-    loop: false,
+    loop: true,
     autoplay: true,
     animationData: animationData,
     rendererSettings: {
@@ -12,13 +13,11 @@ const Loader = () => {
     },
   };
 
-  // const onError = (error) => {
-  //   console.error("Lottie animation error:", error);
-  // };
-
   return (
-    <div className="w-full h-screen flex items-center justify-center">
-      <Lottie options={defaultOptions} width={300} height={300} />
+    <div className="w-full h-screen flex items-center justify-center bg-white">
+      <div className="w-[200px] sm:w-[250px] md:w-[300px]">
+        <Lottie options={defaultOptions} />
+      </div>
     </div>
   );
 };
