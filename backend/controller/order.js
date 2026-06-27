@@ -35,6 +35,7 @@ router.post(
           user,
           totalPrice,
           paymentInfo,
+          shopId,
         });
         orders.push(order);
       }

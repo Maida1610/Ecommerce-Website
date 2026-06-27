@@ -10,6 +10,7 @@ const sendMail = require("../utils/sendMail");
 const catchAsyncError = require("../middleware/catchAsyncError");
 const sendToken = require("../utils/jwtToken");
 const { isAuthenticated } = require("../middleware/auth");
+const cloudinary = require("cloudinary");
 
 // Create user
 router.post("/create-user", upload.single("file"), async (req, res, next) => {
@@ -17,29 +18,27 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
     const { name, email, password } = req.body;
     const userEmail = await User.findOne({ email });
     if (userEmail) {
-      const filename = req.file.filename;
-      const filePath = `uploads/${filename}`;
-      fs.unlink(filePath, (err) => {
-        if (err) {
-          console.log(err);
-          res.status(500).json({ message: "Error deleting file" });
-        }
-      });
       return next(new ErrorHandler("User already exist", 400));
     }
 
-    const filename = req.file.filename;
-    const fileUrl = path.join(filename);
+    // Upload avatar to Cloudinary
+    const b64 = req.file.buffer.toString("base64");
+    const dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+    const cloudResult = await cloudinary.v2.uploader.upload(dataURI, {
+      folder: "avatars",
+      width: 150,
+    });
 
     const user = {
       name: name,
       email: email,
       password: password,
-      avatar: fileUrl,
+      avatar: cloudResult.secure_url,
+      avatarPublicId: cloudResult.public_id,
     };
 
     const activationToken = createActivationToken(user);
-    const activationUrl = `http://localhost:3000/activation/${activationToken}`;
+    const activationUrl = `${process.env.FRONTEND_URL || 'http://localhost:5173'}/activation/${activationToken}`;
 
     try {
       await sendMail({
@@ -217,11 +216,23 @@ router.put(
   catchAsyncError(async (req, res, next) => {
     try {
       const existsUser = await User.findById(req.body.id);
-      const existsAvatarPath = `uploads/${existsUser.avatar}`;
-      fs.unlinkSync(existsAvatarPath);
-      const fileUrl = path.join(req.file.filename);
+
+      // Delete old image from Cloudinary if stored there
+      if (existsUser.avatarPublicId) {
+        await cloudinary.v2.uploader.destroy(existsUser.avatarPublicId);
+      }
+
+      // Upload new avatar to Cloudinary
+      const b64 = req.file.buffer.toString("base64");
+      const dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+      const result = await cloudinary.v2.uploader.upload(dataURI, {
+        folder: "avatars",
+        width: 150,
+      });
+
       const user = await User.findByIdAndUpdate(req.body.id, {
-        avatar: fileUrl,
+        avatar: result.secure_url,
+        avatarPublicId: result.public_id,
       });
 
       res.status(200).json({
@@ -247,7 +258,7 @@ router.put(
       );
       if (sameTypeAddress) {
         return next(
-          new ErrorHandler(`${addressType} address already exists!`, 400)
+          new ErrorHandler(`${req.body.addressType} address already exists!`, 400)
         );
       }
 

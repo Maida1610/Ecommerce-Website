@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
@@ -81,7 +81,7 @@ export default function App() {
     getStripeApikey();
   }, []);
 
-  const stripePromise = stripeApikey ? loadStripe(stripeApikey) : null;
+  const stripePromise = useMemo(() => stripeApikey ? loadStripe(stripeApikey) : null, [stripeApikey]);
 
   return (
     <BrowserRouter>
@@ -265,57 +265,57 @@ export default function App() {
           <Route
             path="/admin/dashboard"
             element={
-              <AdminDashboardPage />
-              // <ProtectedAdminRoute>
-              // </ProtectedAdminRoute>
+              <ProtectedAdminRoute>
+                <AdminDashboardPage />
+              </ProtectedAdminRoute>
             }
           />
           <Route
             path="/admin-users"
             element={
-              <AdminDashboardUsers />
-              // <ProtectedAdminRoute>
-              // </ProtectedAdminRoute>
+              <ProtectedAdminRoute>
+                <AdminDashboardUsers />
+              </ProtectedAdminRoute>
             }
           />
           <Route
             path="/admin-sellers"
             element={
-              <AdminDashboardSellers />
-              // <ProtectedAdminRoute>
-              // </ProtectedAdminRoute>
+              <ProtectedAdminRoute>
+                <AdminDashboardSellers />
+              </ProtectedAdminRoute>
             }
           />
           <Route
             path="/admin-orders"
             element={
-              <AdminDashboardOrders />
-              // <ProtectedAdminRoute>
-              // </ProtectedAdminRoute>
+              <ProtectedAdminRoute>
+                <AdminDashboardOrders />
+              </ProtectedAdminRoute>
             }
           />
           <Route
             path="/admin-products"
             element={
-              <AdminDashboardProducts />
-              // <ProtectedAdminRoute>
-              // </ProtectedAdminRoute>
+              <ProtectedAdminRoute>
+                <AdminDashboardProducts />
+              </ProtectedAdminRoute>
             }
           />
           <Route
             path="/admin-events"
             element={
-              <AdminDashboardEvents />
-              // <ProtectedAdminRoute>
-              // </ProtectedAdminRoute>
+              <ProtectedAdminRoute>
+                <AdminDashboardEvents />
+              </ProtectedAdminRoute>
             }
           />
           <Route
             path="/admin-withdraw-request"
             element={
-              <AdminDashboardWithdraw />
-              // <ProtectedAdminRoute>
-              // </ProtectedAdminRoute>
+              <ProtectedAdminRoute>
+                <AdminDashboardWithdraw />
+              </ProtectedAdminRoute>
             }
           />
         </Routes>

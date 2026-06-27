@@ -11,6 +11,7 @@ const { upload } = require("../multer");
 const catchAsyncError = require("../middleware/catchAsyncError");
 const ErrorHandler = require("../utils/ErrorHandler");
 const sendShopToken = require("../utils/shopToken.js");
+const cloudinary = require("cloudinary");
 
 // Create shop
 router.post(
@@ -31,27 +32,24 @@ router.post(
       // check existing seller
       const sellerEmail = await Shop.findOne({ email });
 
-      const filename = req.file.filename;
-
       if (sellerEmail) {
-        const filePath = `uploads/${filename}`;
-
-        fs.unlink(filePath, (err) => {
-          if (err) {
-            console.log(err);
-          }
-        });
-
         return next(new ErrorHandler("User already exists", 400));
       }
 
-      const fileUrl = path.join(filename);
+      // Upload avatar to Cloudinary
+      const b64 = req.file.buffer.toString("base64");
+      const dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+      const cloudResult = await cloudinary.v2.uploader.upload(dataURI, {
+        folder: "shop-avatars",
+        width: 150,
+      });
 
       const seller = {
         name: req.body.name,
         email: email,
         password: req.body.password,
-        avatar: fileUrl,
+        avatar: cloudResult.secure_url,
+        avatarPublicId: cloudResult.public_id,
         address: req.body.address,
         phoneNumber: req.body.phoneNumber,
         zipCode: req.body.zipCode,
@@ -59,7 +57,7 @@ router.post(
 
       const activationToken = createActivationToken(seller);
 
-      const activationUrl = `http://localhost:5173/seller/activation/${activationToken}`;
+      const activationUrl = `${process.env.FRONTEND_URL || 'http://localhost:5173'}/seller/activation/${activationToken}`;
 
       try {
         await sendMail({
@@ -248,18 +246,24 @@ router.put(
         return next(new ErrorHandler("Seller not found", 404));
       }
 
-      const existsAvatarPath = `uploads/${existsUser.avatar}`;
-
-      if (fs.existsSync(existsAvatarPath)) {
-        fs.unlinkSync(existsAvatarPath);
+      // Delete old avatar from Cloudinary if it exists
+      if (existsUser.avatarPublicId) {
+        await cloudinary.v2.uploader.destroy(existsUser.avatarPublicId);
       }
 
-      const fileUrl = path.join(req.file.filename);
+      // Upload new avatar to Cloudinary
+      const b64 = req.file.buffer.toString("base64");
+      const dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+      const result = await cloudinary.v2.uploader.upload(dataURI, {
+        folder: "shop-avatars",
+        width: 150,
+      });
 
       const user = await Shop.findByIdAndUpdate(
         req.seller._id,
         {
-          avatar: fileUrl,
+          avatar: result.secure_url,
+          avatarPublicId: result.public_id,
         },
         { new: true }
       );
