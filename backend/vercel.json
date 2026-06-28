@@ -8,11 +8,7 @@
   ],
   "routes": [
     {
-      "src": "/api/v2/(.*)",
-      "dest": "backend/server.js"
-    },
-    {
-      "src": "/test",
+      "src": "/(.*)",
       "dest": "backend/server.js"
     }
   ]
