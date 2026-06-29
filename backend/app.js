@@ -6,9 +6,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 app.use(cors({
-  origin: ['http://localhost:5173',
-    'https://ecommerce-website-frontend-lyart.vercel.app',
-  ],
+  origin: process.env.FRONTEND_URL ? [process.env.FRONTEND_URL, 'http://localhost:5173'] : ['http://localhost:5173', 'https://ecommerce-website-frontend-lyart.vercel.app'],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   credentials: true,
    allowedHeaders: ["Content-Type", "Authorization"],
@@ -27,7 +25,7 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 // config
 if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({
-    path: "../.env",
+    path: "./.env",
   });
 }
 
