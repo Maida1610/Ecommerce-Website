@@ -15,7 +15,7 @@ import {
 const Footer = () => {
   return (
     <div className="bg-[#0f172a] text-white">
-      <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-[#0f172a] py-8 border-b border-[#1e293b]">
+      <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-[#1e293b] py-7">
         <h1 className="lg:text-4xl text-3xl md:mb-0 mb-6 lg:leading-normal font-semibold md:w-2/5">
           <span className="text-[#c9a45c]">Subscribe</span> us for get news{" "}
           <br />
