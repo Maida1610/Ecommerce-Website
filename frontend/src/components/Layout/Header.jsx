@@ -65,10 +65,10 @@ const Header = ({ activeHeading }) => {
             {/* Logo */}
             <Link to="/" className="flex-shrink-0">
               <div className="flex items-center gap-2">
-                <div className="w-9 h-9 bg-[#4361ee] rounded-lg flex items-center justify-center">
+                <div className="w-9 h-9 bg-[#0f172a] rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-lg">S</span>
                 </div>
-                <span className="text-2xl font-bold text-[#1a1a2e]">Shop<span className="text-[#f72585]">O</span></span>
+                <span className="text-2xl font-bold text-[#1a1a2e]">Shop<span className="text-[#c9a45c]">O</span></span>
               </div>
             </Link>
 
@@ -79,7 +79,7 @@ const Header = ({ activeHeading }) => {
                 placeholder="Search"
                 value={searchTerm}
                 onChange={handleSearchChange}
-                className="w-full h-[50px]  bg-gray-100 px-6 pr-14 outline-none border border-[#4361ee] border 2px   transition-all"
+                className="w-full h-[50px]  bg-gray-100 px-6 pr-14 outline-none border border-[#0f172a] border 2px   transition-all"
               />
               <AiOutlineSearch
                 size={22}
@@ -109,7 +109,7 @@ const Header = ({ activeHeading }) => {
 
             {/* Become Seller */}
             <Link to={isSeller ? "/dashboard" : "/shop-create"}>
-              <button className="bg-[#f72585] text-white px-6 py-3 rounded-2xl font-semibold shadow-md hover:bg-[#d6246e] hover:shadow-lg transition-all active:scale-95">
+              <button className="bg-[#c9a45c] text-white px-6 py-3 rounded-2xl font-semibold shadow-md hover:bg-[#b08e4a] hover:shadow-lg transition-all active:scale-95">
                 {isSeller ? "Go Dashboard" : "Become Seller"}
               </button>
             </Link>
@@ -119,7 +119,7 @@ const Header = ({ activeHeading }) => {
 
       {/* ---- Row 2 (Categories + Navbar links) ---- */}
       <div
-        className={`w-full  bg-[#4361ee] ${
+        className={`w-full  bg-[#0f172a] ${
           active ? "fixed top-0 left-0 z-30 shadow-md" : ""
         }`}
       >
@@ -131,7 +131,7 @@ const Header = ({ activeHeading }) => {
                 onClick={() => setDropDown((prev) => !prev)}
                 className="flex items-center gap-3 px-5 h-[50px]   bg-white border border-gray-200 hover:border-white hover:shadow-sm transition-all"
               >
-                <BiMenuAltLeft size={24} className="text-[#cdaa80]" />
+                <BiMenuAltLeft size={24} className="text-[#c9a45c]" />
                 <span className="font-semibold text-black">Categories</span>
                 <IoIosArrowDown size={18} className="text-black" />
               </button>
@@ -163,7 +163,7 @@ const Header = ({ activeHeading }) => {
               >
                 <AiOutlineHeart size={26} className="text-white" />
                 {wishlist?.length > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-[#ff2d8d] text-white text-[11px] w-5 h-5 flex items-center justify-center rounded-full font-bold">
+                  <span className="absolute -top-1 -right-1 bg-[#c9a45c] text-white text-[11px] w-5 h-5 flex items-center justify-center rounded-full font-bold">
                     {wishlist.length}
                   </span>
                 )}
@@ -176,7 +176,7 @@ const Header = ({ activeHeading }) => {
               >
                 <AiOutlineShoppingCart size={26} className="text-white" />
                 {cart?.length > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-[#ff2d8d] text-white text-[11px] w-5 h-5 flex items-center justify-center rounded-full font-bold">
+                  <span className="absolute -top-1 -right-1 bg-[#c9a45c] text-white text-[11px] w-5 h-5 flex items-center justify-center rounded-full font-bold">
                     {cart.length}
                   </span>
                 )}
@@ -211,11 +211,11 @@ const Header = ({ activeHeading }) => {
       <div
         className={`${
           active ? "shadow-sm fixed top-0 left-0 z-20" : ""
-        } lg:hidden w-full bg-gradient-to-r from-[#0f1e3f] via-[#213a56] to-[#0f1e3f] h-[60px] flex items-center justify-between px-3 sm:px-4`}
+        } lg:hidden w-full bg-gradient-to-r from-[#0f172a] via-[#1e293b] to-[#0f172a] h-[60px] flex items-center justify-between px-3 sm:px-4`}
       >
         {/* Menu Button */}
         <button
-          className="p-2 cursor-pointer text-white hover:text-[#cdaa80] active:scale-95 transition-all"
+          className="p-2 cursor-pointer text-white hover:text-[#c9a45c] active:scale-95 transition-all"
           onClick={() => setOpenSidebar(true)}
           aria-label="Open menu"
         >
@@ -224,20 +224,20 @@ const Header = ({ activeHeading }) => {
 
         {/* Logo */}
         <Link to="/" className="flex-shrink-0">
-          <h1 className="text-lg sm:text-xl font-bold text-white">Shop<span className="text-[#f72585]">O</span></h1>
+          <h1 className="text-lg sm:text-xl font-bold text-white">Shop<span className="text-[#c9a45c]">O</span></h1>
         </Link>
 
         {/* Icons Container */}
         <div className="flex items-center gap-3 sm:gap-4">
           {/* Wishlist Icon */}
           <button
-            className="p-2 relative cursor-pointer text-white hover:text-[#cdaa80] active:scale-95 transition-all"
+            className="p-2 relative cursor-pointer text-white hover:text-[#c9a45c] active:scale-95 transition-all"
             onClick={() => setOpenWishlist(true)}
             aria-label="Open wishlist"
           >
             <AiOutlineHeart size={24} />
             {wishlist?.length > 0 && (
-              <span className="absolute top-0 right-0 bg-gradient-to-r from-[#cdaa80] to-[#997953] text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold">
+              <span className="absolute top-0 right-0 bg-gradient-to-r from-[#cdaa80] to-[#c9a45c] text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold">
                 {wishlist.length}
               </span>
             )}
@@ -245,13 +245,13 @@ const Header = ({ activeHeading }) => {
 
           {/* Cart Icon */}
           <button
-            className="p-2 relative cursor-pointer text-white hover:text-[#cdaa80] active:scale-95 transition-all"
+            className="p-2 relative cursor-pointer text-white hover:text-[#c9a45c] active:scale-95 transition-all"
             onClick={() => setOpenCart(true)}
             aria-label="Open cart"
           >
             <AiOutlineShoppingCart size={24} />
             {cart?.length > 0 && (
-              <span className="absolute top-0 right-0 bg-gradient-to-r from-[#cdaa80] to-[#997953] text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold">
+              <span className="absolute top-0 right-0 bg-gradient-to-r from-[#cdaa80] to-[#c9a45c] text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold">
                 {cart.length}
               </span>
             )}
@@ -273,13 +273,13 @@ const Header = ({ activeHeading }) => {
             <div className="sticky top-0 bg-black flex justify-between items-center p-4 border-b border-[#cdaa80]">
               {/* Wishlist Icon */}
               <button
-                className="p-2 relative cursor-pointer text-white hover:text-[#cdaa80] transition-colors"
+                className="p-2 relative cursor-pointer text-white hover:text-[#c9a45c] transition-colors"
                 onClick={() => setOpenWishlist(true)}
                 aria-label="Open wishlist"
               >
                 <AiOutlineHeart size={24} />
                 {wishlist?.length > 0 && (
-                  <span className="absolute top-0 right-0 bg-gradient-to-r from-[#cdaa80] to-[#997953] text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold">
+                  <span className="absolute top-0 right-0 bg-gradient-to-r from-[#cdaa80] to-[#c9a45c] text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold">
                     {wishlist.length}
                   </span>
                 )}
@@ -287,7 +287,7 @@ const Header = ({ activeHeading }) => {
 
               {/* Close Button */}
               <button
-                className="p-2 cursor-pointer hover:text-[#cdaa80] active:scale-95 transition-all"
+                className="p-2 cursor-pointer hover:text-[#c9a45c] active:scale-95 transition-all"
                 onClick={() => setOpenSidebar(false)}
                 aria-label="Close menu"
               >
@@ -302,7 +302,7 @@ const Header = ({ activeHeading }) => {
                 placeholder="Search..."
                 value={searchTerm}
                 onChange={handleSearchChange}
-                className="h-[40px] w-full border-2 border-[#cdaa80] rounded-md px-3 focus:border-[#997953] focus:outline-none bg-gray-900 text-white placeholder-gray-400"
+                className="h-[40px] w-full border-2 border-[#cdaa80] rounded-md px-3 focus:border-[#c9a45c] focus:outline-none bg-gray-900 text-white placeholder-gray-400"
               />
               {searchData.length > 0 && (
                 <div className="bg-gray-900 shadow-md w-full mt-2 rounded-md max-h-[200px] overflow-y-auto border border-[#cdaa80]">
@@ -338,7 +338,7 @@ const Header = ({ activeHeading }) => {
                 to={isSeller ? "/dashboard" : "/shop-create"}
                 onClick={() => setOpenSidebar(false)}
               >
-                <div className="bg-gradient-to-r from-[#0f1e3f] via-[#213a56] to-[#997953] rounded-lg hover:shadow-lg transition-all duration-300 active:scale-95">
+                <div className="bg-gradient-to-r from-[#0f172a] via-[#1e293b] to-[#c9a45c] rounded-lg hover:shadow-lg transition-all duration-300 active:scale-95">
                   <h1 className="text-white flex items-center justify-center px-6 py-3 font-medium">
                     {isSeller ? "Go Dashboard" : "Become Seller"}
                     <IoIosArrowForward className="ml-2" />
@@ -370,7 +370,7 @@ const Header = ({ activeHeading }) => {
                   <Link
                     to="/login"
                     onClick={() => setOpenSidebar(false)}
-                    className="block w-full bg-gradient-to-r from-[#0f1e3f] to-[#213a56] text-white py-3 rounded-lg text-center font-medium hover:shadow-lg active:scale-95 transition-all"
+                    className="block w-full bg-gradient-to-r from-[#0f172a] to-[#1e293b] text-white py-3 rounded-lg text-center font-medium hover:shadow-lg active:scale-95 transition-all"
                   >
                     Login
                   </Link>

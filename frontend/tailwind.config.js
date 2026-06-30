@@ -10,10 +10,10 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: "#4361ee",
-        "primary-dark": "#3a0ca3",
-        secondary: "#f72585",
-        accent: "#4cc9f0",
+        primary: "#0f172a",
+        "primary-light": "#1e293b",
+        accent: "#c9a45c",
+        "accent-dark": "#b08e4a",
       },
       screens: {
         "1000px": "1050px",
