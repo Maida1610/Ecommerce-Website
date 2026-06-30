@@ -2,32 +2,35 @@ const express = require("express");
 const ErrorHandler = require("./middleware/error");
 const app = express();
 const cookieParser = require("cookie-parser");
-const bodyParser = require("body-parser");
 const cors = require("cors");
 
+// CORS
 app.use(cors({
-  origin: process.env.FRONTEND_URL ? [process.env.FRONTEND_URL, 'http://localhost:5173'] : ['http://localhost:5173', 'https://ecommerce-website-frontend-lyart.vercel.app'],
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  origin: function(origin, callback) {
+    const allowedOrigins = [
+      'http://localhost:5173',
+      'http://localhost:3000',
+      process.env.FRONTEND_URL,
+    ].filter(Boolean);
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   credentials: true,
-   allowedHeaders: ["Content-Type", "Authorization"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
 app.use(cookieParser());
-app.use("/",express.static(require("path").join(__dirname, "uploads")));
-app.use("/test", (req, res) => {
-  res.send("Hello world!");
-});
-
-//app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
-// config
-if (process.env.NODE_ENV !== "PRODUCTION") {
-  require("dotenv").config({
-    path: "./.env",
-  });
-}
+// Test route
+app.get("/test", (req, res) => {
+  res.json({ success: true, message: "Backend is working!" });
+});
 
 // import routes
 const user = require("./controller/user");
@@ -52,7 +55,7 @@ app.use("/api/v2/coupon", coupon);
 app.use("/api/v2/payment", payment);
 app.use("/api/v2/withdraw", withdraw);
 
-// it's for ErrorHandling
+// Error handling
 app.use(ErrorHandler);
 
 module.exports = app;

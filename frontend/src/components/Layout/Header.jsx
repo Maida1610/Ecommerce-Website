@@ -64,10 +64,12 @@ const Header = ({ activeHeading }) => {
           <div className="h-[85px] flex items-center justify-between gap-6">
             {/* Logo */}
             <Link to="/" className="flex-shrink-0">
-              <img
-                src="https://shopo.quomodothemes.website/assets/images/logo.svg"
-                alt=""
-              />
+              <div className="flex items-center gap-2">
+                <div className="w-9 h-9 bg-[#4361ee] rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">S</span>
+                </div>
+                <span className="text-2xl font-bold text-[#1a1a2e]">Shop<span className="text-[#f72585]">O</span></span>
+              </div>
             </Link>
 
             {/* Search */}
@@ -77,7 +79,7 @@ const Header = ({ activeHeading }) => {
                 placeholder="Search"
                 value={searchTerm}
                 onChange={handleSearchChange}
-                className="w-full h-[50px]  bg-gray-100 px-6 pr-14 outline-none border border-[#342ac8] border 2px   transition-all"
+                className="w-full h-[50px]  bg-gray-100 px-6 pr-14 outline-none border border-[#4361ee] border 2px   transition-all"
               />
               <AiOutlineSearch
                 size={22}
@@ -107,7 +109,7 @@ const Header = ({ activeHeading }) => {
 
             {/* Become Seller */}
             <Link to={isSeller ? "/dashboard" : "/shop-create"}>
-              <button className="bg-black w-h-[50px]  text-white px-6 py-3 rounded-2xl  font-semibold shadow-md hover:shadow-lg transition-all active:scale-95">
+              <button className="bg-[#f72585] text-white px-6 py-3 rounded-2xl font-semibold shadow-md hover:bg-[#d6246e] hover:shadow-lg transition-all active:scale-95">
                 {isSeller ? "Go Dashboard" : "Become Seller"}
               </button>
             </Link>
@@ -117,7 +119,7 @@ const Header = ({ activeHeading }) => {
 
       {/* ---- Row 2 (Categories + Navbar links) ---- */}
       <div
-        className={`w-full  bg-[#342ac8] ${
+        className={`w-full  bg-[#4361ee] ${
           active ? "fixed top-0 left-0 z-30 shadow-md" : ""
         }`}
       >
@@ -222,7 +224,7 @@ const Header = ({ activeHeading }) => {
 
         {/* Logo */}
         <Link to="/" className="flex-shrink-0">
-          <h1 className="text-lg sm:text-xl font-bold text-white">Shopo</h1>
+          <h1 className="text-lg sm:text-xl font-bold text-white">Shop<span className="text-[#f72585]">O</span></h1>
         </Link>
 
         {/* Icons Container */}
