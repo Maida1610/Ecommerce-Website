@@ -76,18 +76,17 @@ const Header = ({ activeHeading }) => {
             <div className="flex-1 max-w-[820px] relative">
               <input
                 type="text"
-                placeholder="Search"
+                placeholder="Search for products..."
                 value={searchTerm}
                 onChange={handleSearchChange}
-                className="w-full h-[50px]  bg-gray-100 px-6 pr-14 outline-none border border-[#0f172a] border 2px   transition-all"
+                className="w-full h-[48px] bg-gray-50 px-6 pr-14 outline-none border-2 border-gray-200 rounded-full focus:border-[#c9a45c] transition-all"
               />
-              <AiOutlineSearch
-                size={22}
-                className="absolute right-5 top-1/2 -translate-y-1/2 text-black cursor-pointer"
-              />
+              <div className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#0f172a] w-[36px] h-[36px] rounded-full flex items-center justify-center cursor-pointer hover:bg-[#1e293b] transition-colors">
+                <AiOutlineSearch size={18} className="text-white" />
+              </div>
 
               {searchData.length > 0 && (
-                <div className="absolute top-[60px] left-0 w-full bg-white shadow-lg border border-gray-200 rounded-xl overflow-hidden z-50 max-h-[260px] overflow-y-auto">
+                <div className="absolute top-[55px] left-0 w-full bg-white shadow-xl border border-gray-200 rounded-2xl overflow-hidden z-50 max-h-[260px] overflow-y-auto">
                   {searchData.map((item, i) => (
                     <Link
                       key={i}
