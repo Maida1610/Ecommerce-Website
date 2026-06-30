@@ -48,8 +48,10 @@ router.post(
         name: req.body.name,
         email: email,
         password: req.body.password,
-        avatar: cloudResult.secure_url,
-        avatarPublicId: cloudResult.public_id,
+        avatar: {
+          public_id: cloudResult.public_id,
+          url: cloudResult.secure_url,
+        },
         address: req.body.address,
         phoneNumber: req.body.phoneNumber,
         zipCode: req.body.zipCode,
@@ -247,8 +249,8 @@ router.put(
       }
 
       // Delete old avatar from Cloudinary if it exists
-      if (existsUser.avatarPublicId) {
-        await cloudinary.v2.uploader.destroy(existsUser.avatarPublicId);
+      if (existsUser.avatar && existsUser.avatar.public_id) {
+        await cloudinary.v2.uploader.destroy(existsUser.avatar.public_id);
       }
 
       // Upload new avatar to Cloudinary
@@ -262,8 +264,10 @@ router.put(
       const user = await Shop.findByIdAndUpdate(
         req.seller._id,
         {
-          avatar: result.secure_url,
-          avatarPublicId: result.public_id,
+          avatar: {
+            public_id: result.public_id,
+            url: result.secure_url,
+          },
         },
         { new: true }
       );
