@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight, AiOutlineSend } from "react-icons/ai";
 import { TfiGallery } from "react-icons/tfi";
 import styles from "../styles/style";
-const ENDPOINT = "https://ecommerce-socket.vercel.app/";
+const ENDPOINT = import.meta.env.VITE_SOCKET_URL || "http://localhost:8900";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const UserInbox = () => {
@@ -298,7 +298,7 @@ const MessageList = ({
     >
       <div className="relative">
         <img
-          src={`${backendUrl}${user?.avatar}`}
+          src={`${user?.avatar}`}
           alt=""
           className="w-[50px] h-[50px] rounded-full"
         />
@@ -339,7 +339,7 @@ const SellerInbox = ({
       <div className="w-full flex p-3 items-center justify-between bg-slate-200">
         <div className="flex">
           <img
-            src={`${backendUrl}${userData?.avatar}`}
+            src={`${userData?.avatar?.url || userData?.avatar}`}
             alt=""
             className="w-[60px] h-[60px] rounded-full"
           />
@@ -367,7 +367,7 @@ const SellerInbox = ({
             >
               {item.sender !== sellerId && (
                 <img
-                  src={`${backendUrl}${userData?.avatar}`}
+                  src={`${userData?.avatar?.url || userData?.avatar}`}
                   className="w-[40px] h-[40px] rounded-full mr-3"
                   alt=""
                 />

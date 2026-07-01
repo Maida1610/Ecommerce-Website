@@ -188,7 +188,7 @@ const Header = ({ activeHeading }) => {
                   className="p-1 rounded-full hover:bg-gray-100 transition-all"
                 >
                   <img
-                    src={user?.avatar?.url}
+                    src={user?.avatar}
                     alt="Profile"
                     className="w-[40px] h-[40px] rounded-full object-cover border-2 border-white"
                   />
@@ -355,7 +355,7 @@ const Header = ({ activeHeading }) => {
                   className="flex items-center gap-3 p-3 hover:bg-[#111827] active:bg-[#020617] rounded-lg transition-colors"
                 >
                   <img
-                    src={user?.avatar?.url}
+                    src={user?.avatar}
                     alt="profile"
                     className="w-[50px] h-[50px] rounded-full border-2 border-[#cdaa80] object-cover"
                   />
